@@ -1,1 +1,3 @@
-# git-issue-tracker-web-app
+```bash 
+# Git Push Command for Mac
+git add . && git commit -m "March 11: App Setup done working on Auth" && git push
