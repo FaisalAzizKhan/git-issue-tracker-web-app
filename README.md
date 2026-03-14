@@ -159,7 +159,7 @@ Users can track progress using status values:
 
 ## Frontend
 
-src/ - components/ - pages/ - store/ - api/ - hooks/ - types/ - utils/
+src/ - components/ - pages/ - store/ - service/ - types/ - utils/
 
 **components**\
 Reusable UI components.
@@ -170,11 +170,8 @@ Application routes.
 **store**\
 Redux Toolkit slices and state management.
 
-**api**\
+**service**\
 Axios API calls.
-
-**hooks**\
-Custom React hooks.
 
 **types**\
 Shared TypeScript interfaces.
@@ -323,7 +320,6 @@ Relationships:
 
 git clone `<repository_url>`{=html}
 
-cd issue-tracker
 
 ------------------------------------------------------------------------
 
@@ -331,11 +327,9 @@ cd issue-tracker
 
 Install dependencies
 
-npm install
+bun install
 
-Run development server
-
-npm run dev
+bun run start
 
 Frontend runs on:
 
