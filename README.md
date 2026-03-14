@@ -383,3 +383,70 @@ The application includes:
 -   API error responses
 -   UI error notifications (React Toastify)
 -   Validation errors via Zod
+
+------------------------------------------------------------------------
+
+# Future Improvements
+
+-   With more time and resources, the following enhancements could be added to improve the Issue Tracker Dashboard:
+
+# Advanced Filtering & Sorting
+
+-   Filter issues by multiple labels, users, and date ranges.
+-   Sort issues by priority, status, creation date, or last activity.
+
+# Search Functionality
+
+-   Global search for issues, comments, and users.
+-   Full-text search on issue titles and descriptions.
+
+# Notifications & Real-Time Updates
+
+-   Email or in-app notifications for new comments, assignments, and status changes.
+-   WebSocket or SignalR integration for real-time updates on dashboards and comments.
+
+# User Roles & Permissions
+
+-   Granular role-based access control (Admin, Manager, Developer, Viewer).
+-   Restrict access to specific projects or actions based on roles.
+
+# Project & Milestone Management
+
+-   Organize issues into projects or sprints.
+-   Track milestones and deadlines visually.
+
+# Issue History & Audit Logs
+
+-   Maintain a detailed change log for each issue (status changes, reassignment, edits).
+-   Audit logs for security and accountability.
+
+# Attachments & Rich Media Support
+
+-   Allow users to attach files, images, or code snippets to issues or comments.
+-   Preview attachments directly within the dashboard.
+
+# UI/UX Enhancements
+
+-   Dark mode toggle.
+-   Drag-and-drop Kanban board for issue status tracking.
+-   Customizable dashboards per user preferences.
+
+# Analytics & Reporting
+
+-   Generate reports for completed issues, team performance, and bottlenecks.
+-   Charts and graphs for visual insights into project health.
+
+# Mobile Support
+
+-   Fully responsive design for mobile and tablet devices.
+-   Option to build a mobile app version for on-the-go issue management.
+
+# Integration with External Tools
+
+-   Slack, Microsoft Teams, or email integrations for notifications.
+-   GitHub/GitLab integration to link commits or pull requests to issues.
+
+# Enhanced Security & Performance
+
+-   Rate-limiting, API throttling, and audit trails.
+-   Optimize database queries for large-scale issue tracking.

@@ -1,6 +1,6 @@
 import { useTenStackQuery } from "../../Services/TenstackQuery/Query";
 import { BackendEndpoints } from "../../Services/Urls/Urls";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FullLoading } from "../../Utiles/Loading/FullLoading/FullLoading";
 import { SmallLoading } from "../../Utiles/Loading/SmallLoading/SmallLoading";
@@ -96,6 +96,12 @@ export const SingleIssue: React.FC = () => {
   return (
     <div className=" max-w-5xl mx-auto space-y-6 mt-2">
       <div className="border rounded-lg p-5 bg-white shadow">
+        <Link
+          to="/app/issues"
+          className="text-blue-600 hover:underline text-sm font-medium"
+        >
+          &larr; Back
+        </Link>
         <h1 className="text-2xl font-bold">{issue.title}</h1>
 
         {issue.description && (

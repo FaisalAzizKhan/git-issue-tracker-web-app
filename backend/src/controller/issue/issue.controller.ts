@@ -45,11 +45,19 @@ export const IssueController = {
       const offset: number = Number(query?.page_no || params?.page_no) || 1;
       const skip: number = (offset - 1) * limit;
       const issue_id: string = String(query?.issue_id || params?.issue_id);
+      const status: string = String(query?.status || params?.status);
+      const priority: string = String(query?.priority || params?.priority);
+
+      const where = {
+        ...(issue_id && issue_id !== "undefined" && { issue_id }),
+        ...(status && status !== "undefined" && { status }),
+        ...(priority && priority !== "undefined" && { priority }),
+      }
 
       const issues = await IssueRepository.getAllIssues({
+        where,
         limit,
         skip,
-        issue_id,
       });
 
       return {

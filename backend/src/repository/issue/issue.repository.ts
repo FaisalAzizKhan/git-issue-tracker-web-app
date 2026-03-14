@@ -14,13 +14,10 @@ export const IssueRepository = {
       throw error;
     }
   },
-  getAllIssues: async ({ limit, skip, issue_id }: any) => {
+  getAllIssues: async ({ limit, skip, where }: any) => {
     try {
-      
       return await prisma.issue.findMany({
-        where: {
-          ...(issue_id && issue_id !== "undefined" && { issue_id }),
-        },
+        where: where,
         skip: skip,
         take: limit,
         include: { users: { omit: { password: true } } },
