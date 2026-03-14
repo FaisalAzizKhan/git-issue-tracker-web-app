@@ -3,7 +3,7 @@ import "./SmallLoading.css"
 export const SmallLoading = () => {
   return (
     <svg
-      className="small-loading-spinner"
+      className="small-loading-spinner stroke-slate-200 mx-auto h-6"
       viewBox="25 25 50 50"
       style={{
         width: "3.25em",

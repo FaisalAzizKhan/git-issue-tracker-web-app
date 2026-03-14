@@ -8,7 +8,7 @@ import {
 } from "../../schema/auth/signup.schema.ts";
 import { handleElysiaError } from "../../utilities/error/error.utilities";
 import { UsersRepository } from "../../repository/users/users.repository";
-import { createToken } from "../../utilities/token/token.utilities..ts";
+import { createToken } from "../../utilities/token/token.utilities.ts";
 
 export const AuthController = {
   login: async ({ body, error, set, jwt }: any) => {
@@ -59,8 +59,7 @@ export const AuthController = {
 
      return {
        message: "Login successful",
-       data: usersWithoutPassword,
-       token,
+       data: { ...usersWithoutPassword, token },
      };
    } catch (err: any) {
 

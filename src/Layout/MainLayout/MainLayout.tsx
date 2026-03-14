@@ -2,8 +2,8 @@
 
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
-// import Topbar from "../Topbar/Topbar";
-// import Sidebar from "../Sidebar/Sidebar";
+import { SideBar } from "../Sidebar/Sidebar";
+
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -18,32 +18,18 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children, pageTitle }) => {
   }, []);
 
   return (
-    <div className="min-h-screen flex bg-[#F6F7F9] overflow-x-hidden">
-      <div className="hidden lg:block fixed top-0 left-0 h-screen z-20 px-4">
-        {/* <Sidebar isVisible={isVisible} setIsVisible={setIsVisible} /> */}
+    <div className="min-h-screen flex bg-[#F6F7F9] overflow-x-hidden p-4">
+      <div className="  h-screen top-5 left-0 fixed ">
+        <SideBar  />
       </div>
-
       <div
         className={
-          "flex flex-col flex-1 w-full " + (isVisible ? "ml-[200px]" : "ml-[55px]")
+          "flex flex-col flex-1 w-full "  
         }
       >
-        <div
-          className={
-            "fixed top-0 right-0 z-30 px-4 " +
-            (isVisible ? "left-[200px]" : "left-[56px]")
-          }
-        >
-          <div className="flex items-center gap-4 pl-4">
-            <div className="flex-grow">
-              {/* <Topbar dynamicTitle={pageTitle} /> */}
-            </div>
-          </div>
-        </div>
-
-        <main className="flex-grow pt-28 px-4 sm:px-6 lg:px-8 max-w-full overflow-x-hidden">
+        <div className="flex-grow ml-[140px] ">
           {children}
-        </main>
+        </div>
       </div>
     </div>
   );

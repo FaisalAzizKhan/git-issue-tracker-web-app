@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { BsFacebook } from "react-icons/bs";
-import { FcGoogle } from "react-icons/fc";
+import { FaGithubAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { loginPageValidationSchema } from "../../Utiles/ValidationSchema/schema/LoginPage";
@@ -17,6 +16,8 @@ import CustomInput from "../../Utiles/CustomInput/CustomInput";
 const LoginPage = () => {
   const navigate = useNavigate();
   const [errors, setErrors] = useState<any>();
+
+  document.title = "Login";
 
   const { mutate: userlogin, isLoading } = useTenStackMutation({
     url: BackendEndpoints.Auth.Login,
@@ -44,8 +45,7 @@ const LoginPage = () => {
       await userlogin(formData, {
         onSuccess: (data: any) => {
           const { token, ...alldata } = data?.data?.data;
-          console.log("token:", token);
-          console.log("alldata:", alldata);
+        
           toast.success("Login successful");
           useAppDispatch(
             setCredentials({
@@ -68,31 +68,18 @@ const LoginPage = () => {
   };
 
   const fields: FieldInterface[] = [
-    { label: "Your email", type: "text", name: "email" },
+    { label: "Email", type: "text", name: "email" },
     { label: "Password", type: "password", name: "password" },
   ];
 
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-[#0B0C13] flex items-center justify-center">
-      {" "}
-      <div className="absolute w-[300px] h-[300px] bg-[#0D275A] rounded-full blur-[150px] left-[-100px] bottom-[-100px] z-0" />
-      <div className="absolute w-[300px] h-[300px] bg-[#432246] rounded-full blur-[150px] bottom-[-100px] left-1/2 translate-x-[45%] z-0" />
-      <div className="absolute w-[300px] h-[300px] bg-[#0D275A] rounded-full blur-[100px] top-[-100px] left-1/2 translate-x-[45%] z-0" />
-      <div className="relative z-10 bg-white rounded-xl shadow-2xl p-7 w-full max-w-md">
-        {/* Form Section */}
-
-        <div className="w-full px-9 inline-block text-center relative">
-          <div className="relative">
-            
-            <hr className="border-t border-gray-300 my-5" />
+    <div className="h-screen w-full overflow-hidden bg-gray-200 flex items-center justify-center">
+      <div className="  bg-white rounded-xl shadow-2xl p-7 w-full max-w-md h-[60%]">
+        <div className="w-full px-9 inline-block text-center  ">
+          <div className="flex items-center flex-col ">
+            <FaGithubAlt className="text-9xl mb-5 text-slateblue" />
+           
           </div>
-
-          <h2
-            className="text-2xl font-semibold mb-6 text-center text-slateblue"
-            style={{ color: "#2A374C" }}
-          >
-            Log in
-          </h2>
           <form onSubmit={handleSubmit} className="bg-white rounded-lg w-full ">
             {fields.map((field: FieldInterface | any) => (
               <div key={field?.name} className="mb-4">
@@ -100,11 +87,6 @@ const LoginPage = () => {
               </div>
             ))}
             <CustomButtonWithLoading isLoading={isLoading} />
-          
-
-         
-
-           
           </form>
         </div>
       </div>

@@ -14,6 +14,7 @@ export const IssueSchema = z.object({
   priority: PriorityEnum.optional().default("MEDIUM"),
   assignee: z.string().optional(),
   is_opened: z.boolean().optional().default(true),
+  assign_to_id: z.string().uuid().optional(),
   users_id: z.string().uuid().optional(),
 });
 

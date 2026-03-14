@@ -1,4 +1,5 @@
 import { IssueRepository } from "../../repository/issue/issue.repository";
+import { UsersRepository } from "../../repository/users/users.repository";
 import { IssueSchema, type IssueInputSchema } from "../../schema/issue/issue.schema";
 import { handleElysiaError } from "../../utilities/error/error.utilities";
 
@@ -18,10 +19,9 @@ export const IssueController = {
       status,
       priority,
       description,
+      assign_to_id,
       labels,
     }: IssueInputSchema = parsed.data;
-
-    // return console.log("Creating issue with data:", { loggedin_user_id, title, variant, status, priority, description, labels });
 
     const new_issue = await IssueRepository.createIssue({
       title,
@@ -29,6 +29,7 @@ export const IssueController = {
       status,
       priority,
       description,
+      assign_to_id,
       labels,
       users_id: loggedin_user_id,
     });
@@ -43,12 +44,32 @@ export const IssueController = {
       const limit: number = Number(query?.page_size || params?.page_size) || 10;
       const offset: number = Number(query?.page_no || params?.page_no) || 1;
       const skip: number = (offset - 1) * limit;
-      const issue_id: string = String(query?.issue_id || params?.issue_id)
+      const issue_id: string = String(query?.issue_id || params?.issue_id);
 
       const issues = await IssueRepository.getAllIssues({
         limit,
         skip,
         issue_id,
+      });
+
+      return {
+        message: "Issues retrieved successfully",
+        data: issues,
+      };
+    } catch (error) {
+      console.error("Error retrieving issues:", error);
+      return handleElysiaError(set, 500, {
+        message: "An error occurred while retrieving issues",
+      });
+    }
+  },
+  getAllIssuesByUses: async ({ error, set, query, params, loggedin_user_id }: any) => {
+    try {
+
+      const users_id: string = String(loggedin_user_id);
+
+      const issues = await UsersRepository.getAllExceptLoggedInUser({
+        users_id,
       });
 
       return {

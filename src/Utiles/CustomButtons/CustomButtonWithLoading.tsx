@@ -7,7 +7,7 @@ const CustomButtonWithLoading: React.FC<{
   return (
     <button
       type="submit"
-      className={`w-full px-4 py-3 text-white cursor-pointer font-semibold rounded-md ${
+      className={`w-full px-4 py-3 text-white my-4 cursor-pointer font-semibold rounded-md ${
         isLoading ? "bg-gray-400" : "hover:bg-gray-900"
       }`}
       style={

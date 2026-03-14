@@ -1,11 +1,13 @@
 import { Elysia } from "elysia";
 import { swagger } from "@elysiajs/swagger";
 import { connectToPostgreSQL } from "./databaseConnection/pg.ts";
-import getPrivateIP from "./utilities/printip/printip.utilities..ts";
+import getPrivateIP from "./utilities/printip/printip.utilities.ts";
 import cors from "@elysiajs/cors";
 import { logger } from "./utilities/logger/logger.utilities.ts";
 import AuthRoutes from "./routes/auth/auth.routes.ts";
 import IssueRoutes from "./routes/issue/issue.routes.ts";
+import IssueCommentRoutes from "./routes/issue/issue.comment.routes.ts";
+import UsersRoutes from "./routes/users/users.routes.ts";
  
 
 const SERVER_PORT = Bun.env.SERVER_PORT || 5019;
@@ -37,14 +39,6 @@ const baseRoute = async (app: Elysia) => {
   }));
 };
 
-
-
-
-
-
-
-
-
 const app = new Elysia();
 
 if (Bun.env.NODE_ENV === "development" || Bun.env.NODE_ENV === "production")
@@ -57,6 +51,8 @@ app
   .onError(({ code }) => code === "NOT_FOUND" && "Route not found :(")
   .use(AuthRoutes)
   .use(IssueRoutes)
+  .use(UsersRoutes)
+  .use(IssueCommentRoutes);
 
 
 connectToPostgreSQL()
