@@ -7,7 +7,7 @@ bunx dotenv -e .env -- bunx prisma migrate deploy 1
 bunx dotenv -e .env -- bunx prisma generate
 
 # Git Push Command for Mac
-git add . && git commit -m "March 14: filters added" && git push
+git add . && git commit -m "March 14: readme updated" && git push
 
 # Some User emails for this project.
 user1@git.com user3@git.com user2@git.com
