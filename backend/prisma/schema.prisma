@@ -1,0 +1,79 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model users {
+  users_id                        String              @id @default(uuid()) @db.Uuid
+  email                           String              @unique
+  phone                           String?
+  full_name                       String?
+  last_name                       String?
+  first_name                      String?
+  password                        String
+  profile_image                   String?
+  created_at                      DateTime            @default(now())
+  updated_at                      DateTime            @updatedAt
+  is_deleted                      Boolean             @default(false)
+  is_active                       Boolean             @default(true)
+
+  issue                           issue[]              @relation("issue")
+  issue_assign_to                 issue[]              @relation("issue_assign_to")
+  issue_comment                   issue_comment[]             
+
+}
+
+model issue {
+
+  issue_id                        String              @id @default(uuid()) @db.Uuid
+  title                           String
+  variant                         String?
+
+  description                     String?
+  labels                          String[]   
+  status                          Status              @default(IN_PROGRESS)
+  priority                        Priority            @default(MEDIUM)
+  assignee                        String?
+  created_at                      DateTime            @default(now())
+  is_opened                       Boolean             @default(true)
+
+  users_id                        String?             @db.Uuid
+  users                           users?              @relation("issue", fields: [users_id], references: [users_id], onDelete: Cascade)
+
+  assign_to_id                    String?             @db.Uuid
+  assign_to                       users?              @relation("issue_assign_to", fields: [assign_to_id], references: [users_id], onDelete: Cascade)
+
+
+  issue_comment                   issue_comment[]
+}
+
+model issue_comment {
+
+  issue_comment_id                String              @id @default(uuid()) @db.Uuid
+  comment                         String
+  created_at                      DateTime            @default(now())
+
+  issue_id                        String?             @db.Uuid
+  issue                           issue?              @relation(fields: [issue_id], references: [issue_id], onDelete: Cascade)
+  users_id                        String?             @db.Uuid
+  users                           users?              @relation(fields: [users_id], references: [users_id], onDelete: Cascade)
+
+
+}
+
+enum Status {
+  CLOSED
+  IN_PROGRESS
+  OPEN
+  REVIEW
+}
+
+enum Priority {
+  HIGH
+  MEDIUM
+  LOW
+}
