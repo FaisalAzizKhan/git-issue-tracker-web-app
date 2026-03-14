@@ -19,7 +19,7 @@ export const SideBar = () => {
   ];
 
   return (
-    <div className=" flex flex-col justify-between h-[95%] py-2 px-2 border-blue-300  border-2 rounded-lg bg-gradient-to-r from-blue-200 from-10% via-gray-200 via-30% to-gray-300 to-90%">
+    <div className=" flex flex-col justify-between h-[95%] py-2 px-2 border-blue-300  border-2 rounded-lg bg-blue-50 ">
       <div>
         {sideBarItems.map((item) => (
           <Link

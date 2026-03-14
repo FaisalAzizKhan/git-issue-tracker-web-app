@@ -19,7 +19,7 @@ export const Issue = () => {
   const issues = GetAllIssues?.data?.data || [];
 
   return (
-    <div className="px-4">
+    <div className="px-4 max-w-5xl mx-auto">
       <div className="flex justify-between items-center py-2">
         <div className="text-3xl font-semibold">All Issues</div>
         <div>

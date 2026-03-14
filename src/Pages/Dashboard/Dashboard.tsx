@@ -9,7 +9,7 @@ const Dashboard = () => {
   });
 
   return (
-    <div className="flex min-h-screen w-full items-start flex-col px-2">
+    <div className="flex min-h-screen w-full items-start flex-col mt-2 max-w-5xl mx-auto">
       <div onClick={() => console.log(UsersDetails?.data?.data)} className=" ">
         <div className="space-y-2 px-2">
           <p>
@@ -80,7 +80,7 @@ const Dashboard = () => {
             .slice(0, 3)
             .map((data: any) => {
               return (
-                 <Link
+                <Link
                   to={`/app/issues/${data?.issue?.issue_id}`}
                   // onClick={() => console.log(data)}
                   key={data?.issue_id}

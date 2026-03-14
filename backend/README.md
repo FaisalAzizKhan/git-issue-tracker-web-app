@@ -1,18 +1,37 @@
-sudo chown -R ubuntu:ubuntu /smart_wheels_code/smart-wheels-web-backend
-
-Migration in Mac without Deleting
 ```bash 
+
+Migration in Mac 
+
 bunx dotenv -e .env prisma migrate dev --name 1
 bunx dotenv -e .env -- bunx prisma migrate deploy 1
 bunx dotenv -e .env -- bunx prisma generate
-```
- 
 
-git add . && git commit -m "Mar 12: product update fixed" && git push 
- 
-bun run start 
+# Git Push Command for Mac
+git add . && git commit -m "March 14: all done" && git push
+
+# Some User emails for this project.
+user1@git.com user3@git.com user2@git.com
+
  
 http://localhost:5020
+
+# .env file requirement
+
+# Server Post
+SERVER_PORT = 5020
+NODE_ENV = production
+
+# PostgreSQL Database
+PG_DB_HOST =  
+PG_DB_USER =  
+PG_DB_NAME =       
+PG_DB_PASSWORD =  
+PG_DB_PORT =  
+DATABASE_URL = "postgresql://${PG_DB_USER}:${PG_DB_PASSWORD}@${PG_DB_HOST}:${PG_DB_PORT}/${PG_DB_NAME}"
+
+# JWT
+JWT_SECRET_KEY = "i3@t!82xK%eJnv7sZLqhP@3MfrDqs4FopZCq"
+
 
 
  

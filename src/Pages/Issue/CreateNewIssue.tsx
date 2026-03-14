@@ -109,15 +109,17 @@ export const CreateNewIssue = () => {
                 className="w-full border p-2 rounded capitalize"
               >
                 {GetAllUsers &&
-                  GetAllUsers?.data?.data.map((users: any) => (
-                    <option key={users?.users_id} value={users?.users_id}>
-                      <div className="flex gap-2">
-                        <div>
-                          {users?.first_name + " " + users?.last_name + " "}
+                  !!GetAllUsers?.data?.data &&GetAllUsers?.data?.data?.map(
+                    (users: any) => (
+                      <option key={users?.users_id} value={users?.users_id}>
+                        <div className="flex gap-2">
+                          <div>
+                            {users?.first_name + " " + users?.last_name + " "}
+                          </div>
                         </div>
-                      </div>
-                    </option>
-                  ))}
+                      </option>
+                    )
+                  )}
               </select>
             );
           }
